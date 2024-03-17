@@ -50,6 +50,20 @@ app.post('/add-book', async(req,res) =>{
         res.status(500).send('Internal Server Error');
     }
 });
+app.post('/delete-book/:isbn', async (req, res) => {
+    const { isbn } = req.params;
+    try {
+        const result = await db.query('DELETE FROM books WHERE isbn = $1', [isbn]);
+        if (result.rowCount > 0) {
+            res.redirect('/');
+        } else {
+            res.status(404).send('Book not found');
+        }
+    } catch (err) {
+        console.error('Error deleting book:', err);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 async function fetchBookCover(isbn){
     try{

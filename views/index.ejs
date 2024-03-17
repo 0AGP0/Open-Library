@@ -55,11 +55,17 @@
                             <img class="card-img d-none" src="/book-cover/<%= book.isbn %>"
                                 alt="Creative Manner Design Lorem Ipsum Sit Amet Consectetur dipisi?">
                             <div class="card-img-overlay d-flex flex-column">
+                                <form action="/delete-book/<%= book.isbn %>" method="post">
+                                    <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                                </form>
                                 <div class="card-body">
-                                    <small class="card-meta mb-2"><%= book.author %></small>
-                                    <h4 class="card-title mt-0 "><%= book.title %></h4>
+                                    <small class="card-meta mb-2">
+                                        <%= book.author %>
+                                    </small>
+                                    <h4 class="card-title mt-0 ">
+                                        <%= book.title %>
+                                    </h4>
                                     <small class="card-meta mb-2">Rating: <%= book.rating %></small>
-                                    
                                 </div>
                             </div>
                         </div>
